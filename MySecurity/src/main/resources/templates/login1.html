@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"><!-- Thymeleaf为我们提供的Spring Security的标签支持 -->
 <head>
-<meta charset="UTF-8"/>
-<title>Insert title here</title>
+    <meta content="text/html;charset=UTF-8"/>
+    <title sec:authentication="name"></title> <!-- 获得当前用户的用户名 -->
 </head>
 <body>
-欢迎登录jjjjj
+<span sec:authentication="name">bob</span>
 </body>
 </html>

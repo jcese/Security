@@ -16,6 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			throws Exception {
 		auth.inMemoryAuthentication().withUser("user").password("password")
 				.roles("USER");
+		
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
@@ -23,6 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().httpBasic()
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")); // logout
 	}
-
+	
 	
 }
