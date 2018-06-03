@@ -17,12 +17,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication().withUser("user").password("password")
 				.roles("USER");
 		
+		
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin()
+		.loginPage("/login") 
+		.permitAll()
 				.and().httpBasic()
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")); // logout
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // logout
+				.logoutSuccessUrl("/");
+		http.csrf().disable();
+				
 	}
 	
 	
